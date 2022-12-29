@@ -245,33 +245,19 @@ class _SearchMapPlaceWidgetState extends State<SearchGooglePlacesWidget>
   */
   InputDecoration _inputStyle() {
     return InputDecoration(
-      contentPadding: const EdgeInsets.only(left: 22, bottom: 14, top: 14),
-      hintText: widget.placeholder,
-      /*  hintStyle: montserratTextStyle.copyWith(
-                fontWeight: FontWeight.w400, fontSize: 14),
-            errorText: widget.errorText, */
-      errorMaxLines: 2,
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(20),
-        borderSide: BorderSide(color: Colors.grey),
+      hintText: this.widget.placeholder,
+      border: InputBorder.none,
+      contentPadding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
+      hintStyle: TextStyle(
+        color: widget.darkMode! ? Colors.grey[100] : Colors.grey[850],
       ),
-      focusColor: Colors.black,
-      enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color: Colors.grey)),
-      border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color: Colors.grey)),
     );
   }
 
   BoxDecoration _containerDecoration() {
     return BoxDecoration(
       color: widget.darkMode! ? Colors.grey[800] : Colors.white,
-      borderRadius: BorderRadius.all(Radius.circular(6.0)),
-      boxShadow: [
-        BoxShadow(color: Colors.black12, blurRadius: 20, spreadRadius: 10)
-      ],
+      borderRadius: BorderRadius.all(Radius.circular(20)),
     );
   }
 
