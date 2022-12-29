@@ -186,6 +186,7 @@ class _SearchMapPlaceWidgetState extends State<SearchGooglePlacesWidget>
         children: <Widget>[
           Expanded(
             child: TextField(
+              cursorColor: Colors.black,
               decoration: _inputStyle(),
               controller: _textEditingController,
               onSubmitted: (_) => _selectPlace(),
@@ -263,7 +264,8 @@ class _SearchMapPlaceWidgetState extends State<SearchGooglePlacesWidget>
     return BoxDecoration(
         color: widget.darkMode! ? Colors.grey[800] : Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(20)),
-        border: Border.all(color: Color(0XFFEBEBEB)));
+        border: Border.all(
+            color: _isEditing ? Color(0XFF464E59) : Color(0XFFEBEBEB)));
   }
 
   /*
@@ -337,7 +339,6 @@ class _SearchMapPlaceWidgetState extends State<SearchGooglePlacesWidget>
   /// Will be called when a user selects one of the Place options
   void _selectPlace({Place? prediction}) async {
     if (prediction != null) {
-      print("PLUGIN GOOGLE PLACES ${prediction.description}");
       _textEditingController.value = TextEditingValue(
         text: prediction.description!,
         selection: TextSelection.collapsed(

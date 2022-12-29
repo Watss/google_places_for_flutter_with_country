@@ -40,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         child: Center(
           child: SearchGooglePlacesWidget(
+            hintStyle: TextStyle(),
             apiKey: 'Your Google Map API Key goes here',
             // The language of the autocompletion
             language: 'en',
