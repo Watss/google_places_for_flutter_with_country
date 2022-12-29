@@ -256,9 +256,9 @@ class _SearchMapPlaceWidgetState extends State<SearchGooglePlacesWidget>
 
   BoxDecoration _containerDecoration() {
     return BoxDecoration(
-      color: widget.darkMode! ? Colors.grey[800] : Colors.white,
-      borderRadius: BorderRadius.all(Radius.circular(20)),
-    );
+        color: widget.darkMode! ? Colors.grey[800] : Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        border: Border.all(color: Color(0XFFEBEBEB)));
   }
 
   /*
