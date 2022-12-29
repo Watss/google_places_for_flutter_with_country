@@ -3,6 +3,8 @@ part of google_places_for_flutter;
 class SearchGooglePlacesWidget extends StatefulWidget {
   SearchGooglePlacesWidget({
     @required this.apiKey,
+    required this.hintStyle,
+    this.inputStyle,
     this.placeholder = 'Search',
     this.icon = Icons.search,
     this.hasClearButton = true,
@@ -20,6 +22,9 @@ class SearchGooglePlacesWidget extends StatefulWidget {
   })  : assert((location == null && radius == null) ||
             (location != null && radius != null)),
         super(key: key);
+
+  final TextStyle? inputStyle;
+  final TextStyle hintStyle;
 
   final Key? key;
 
@@ -187,10 +192,12 @@ class _SearchMapPlaceWidgetState extends State<SearchGooglePlacesWidget>
               onEditingComplete: _selectPlace,
               autofocus: false,
               focusNode: _fn,
-              style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width * 0.04,
-                color: widget.darkMode! ? Colors.grey[100] : Colors.grey[850],
-              ),
+              style: widget.inputStyle ??
+                  TextStyle(
+                    fontSize: MediaQuery.of(context).size.width * 0.04,
+                    color:
+                        widget.darkMode! ? Colors.grey[100] : Colors.grey[850],
+                  ),
             ),
           ),
           Container(width: 15),
@@ -248,9 +255,7 @@ class _SearchMapPlaceWidgetState extends State<SearchGooglePlacesWidget>
       hintText: this.widget.placeholder,
       border: InputBorder.none,
       contentPadding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
-      hintStyle: TextStyle(
-        color: widget.darkMode! ? Colors.grey[100] : Colors.grey[850],
-      ),
+      hintStyle: widget.hintStyle,
     );
   }
 
@@ -332,6 +337,7 @@ class _SearchMapPlaceWidgetState extends State<SearchGooglePlacesWidget>
   /// Will be called when a user selects one of the Place options
   void _selectPlace({Place? prediction}) async {
     if (prediction != null) {
+      print("PLUGIN GOOGLE PLACES ${prediction.description}");
       _textEditingController.value = TextEditingValue(
         text: prediction.description!,
         selection: TextSelection.collapsed(
