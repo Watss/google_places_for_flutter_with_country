@@ -93,6 +93,7 @@ class _SearchMapPlaceWidgetState extends State<SearchGooglePlacesWidget>
 
   List<dynamic> _placePredictions = [];
   bool _isEditing = false;
+  bool _isFocus = false;
   Geocoding? geocode;
 
   String _tempInput = "";
@@ -104,6 +105,12 @@ class _SearchMapPlaceWidgetState extends State<SearchGooglePlacesWidget>
 
   @override
   void initState() {
+    _fn.addListener(() {
+      final isFocus = _fn.hasFocus;
+      setState(() {
+        _isFocus = isFocus;
+      });
+    });
     geocode = Geocoding(apiKey: widget.apiKey, language: widget.language);
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 500));
@@ -265,7 +272,7 @@ class _SearchMapPlaceWidgetState extends State<SearchGooglePlacesWidget>
         color: widget.darkMode! ? Colors.grey[800] : Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(20)),
         border: Border.all(
-            color: _isEditing ? Color(0XFF464E59) : Color(0XFFEBEBEB)));
+            color: _isFocus ? Color(0XFF464E59) : Color(0XFFEBEBEB)));
   }
 
   /*
