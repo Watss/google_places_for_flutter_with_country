@@ -245,12 +245,23 @@ class _SearchMapPlaceWidgetState extends State<SearchGooglePlacesWidget>
   */
   InputDecoration _inputStyle() {
     return InputDecoration(
-      hintText: this.widget.placeholder,
-      border: InputBorder.none,
-      contentPadding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
-      hintStyle: TextStyle(
-        color: widget.darkMode! ? Colors.grey[100] : Colors.grey[850],
+      contentPadding: const EdgeInsets.only(left: 22, bottom: 14, top: 14),
+      hintText: widget.placeholder,
+      /*  hintStyle: montserratTextStyle.copyWith(
+                fontWeight: FontWeight.w400, fontSize: 14),
+            errorText: widget.errorText, */
+      errorMaxLines: 2,
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: BorderSide(color: Colors.grey),
       ),
+      focusColor: Colors.black,
+      enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide(color: Colors.grey)),
+      border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide(color: Colors.grey)),
     );
   }
 
