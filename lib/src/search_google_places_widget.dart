@@ -262,7 +262,7 @@ class _SearchMapPlaceWidgetState extends State<SearchGooglePlacesWidget>
     return InputDecoration(
       hintText: this.widget.placeholder,
       border: InputBorder.none,
-      contentPadding: const EdgeInsets.only(left: 22, bottom: 14, top: 14),
+      contentPadding: const EdgeInsets.only(left: 10, bottom: 14, top: 14),
       hintStyle: widget.hintStyle,
     );
   }
